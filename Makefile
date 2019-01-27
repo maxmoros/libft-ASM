@@ -5,9 +5,19 @@ CC = nasm
 
 ODIR = .objects
 SDIR = srcs
+IDIR = inc
 
 SRC =	\
-		ft_bzero.s
+		ft_bzero.s		\
+		ft_strcat.s		\
+		ft_isalpha.s	\
+		ft_isdigit.s	\
+		ft_isalnum.s	\
+		ft_isalnum.s	\
+		ft_isascii.s	\
+		ft_isprint.s	\
+		ft_toupper.s	\
+		ft_tolower.s
 
 OBJS = $(patsubst %.s, $(ODIR)/%.o, $(SRC))
 
@@ -30,6 +40,11 @@ $(ODIR)/%.o: $(addprefix $(SDIR)/, %.s)
 	
 $(ODIR):
 		mkdir -p $(ODIR)
+
+test:
+		gcc -Wall -Wextra -Werror -o test test.c $(NAME) -I $(IDIR)
+
+.phony: clean re fclean
 
 fclean: clean
 		rm -rf $(ODIR)
