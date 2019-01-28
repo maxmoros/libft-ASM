@@ -17,7 +17,13 @@ SRC =	\
 		ft_isascii.s	\
 		ft_isprint.s	\
 		ft_toupper.s	\
-		ft_tolower.s
+		ft_tolower.s	\
+		ft_puts.s		\
+		ft_strlen.s		\
+		ft_memset.s		\
+		ft_memcpy.s		\
+		ft_strdup.s		\
+		ft_cat.s
 
 OBJS = $(patsubst %.s, $(ODIR)/%.o, $(SRC))
 
@@ -42,7 +48,7 @@ $(ODIR):
 		mkdir -p $(ODIR)
 
 test:
-		gcc -Wall -Wextra -Werror -o test test.c $(NAME) -I $(IDIR)
+		gcc -Wall -Wextra -Werror -o testy test.c $(NAME) -I $(IDIR)
 
 .phony: clean re fclean
 
@@ -51,7 +57,7 @@ fclean: clean
 		rm -rf $(NAME)
 
 clean:
-		rm -rf $(OBJS) test
+		rm -rf $(OBJS) testy
 
 re: fclean all
 

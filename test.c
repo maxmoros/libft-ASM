@@ -1,9 +1,12 @@
 #include "libftasm.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <strings.h>
 #include <string.h>
 #include <ctype.h>
+
+void	ft_putstr(char *str);
 
 // Make this more complex
 int		ck_bzero(int i, size_t n)
@@ -65,6 +68,57 @@ int		ck_tolower(int c)
 	return (ft_tolower(c) == tolower(c));
 }
 
+int		ck_puts(const char *s)
+{
+	puts(s);
+	ft_puts(s);
+	return (1);
+}
+
+int		ck_strlen(char *str)
+{
+	printf("\tft_ = %lu, sys = %lu\n", ft_strlen(str), strlen(str));
+	return (ft_strlen(str) == strlen(str));
+}
+
+int		ck_memset(void *s, int c, size_t n)
+{
+	char	*A;
+	char	*B;
+
+	A = strdup((char*)s);
+	B = strdup((char*)s);
+	printf("\tft_ = %s, sys = %s\n", A, B);
+	printf("\tft_ = %s, sys = %s\n", ft_memset(A, c, n), memset(B, c, n));
+	return (!strcmp(A, B));
+}
+
+int		ck_memcpy(void *dest, const void *src, size_t n)
+{
+	char	*A;
+	char	*B;
+
+	A = strdup((char*)dest);
+	B = strdup((char*)dest);
+	printf("\tft_ = %s, sys = %s\n", A, B);
+	A = ft_memcpy(A, src, n);
+	B = ft_memcpy(B, src, n);
+	printf("\tft_ = %s, sys = %s\n", A, B);
+	return (!strcmp(A, B));
+}
+
+int		ck_strdup(const char *s)
+{
+	char	*A;
+	char	*B;
+
+	printf("\tstr = \"%s\"\n", s);
+	A = ft_strdup(s);
+	B = strdup(s);
+	printf("\tft_ = %s, sys = %s\n", A, B);
+	return (!strcmp(A, B));
+}
+
 void	ft_putstr(char *str)
 {
 	while (*str)
@@ -74,41 +128,55 @@ void	ft_putstr(char *str)
 void	confirm(int i)
 {
 	if (i)
-		ft_putstr("\x1b[32mOK!\n\x1b[0m");
+		ft_putstr("\x1b[32mOK! \x1b[0m");
 	else
-		ft_putstr("\x1b[31mKO!\n\x1b[0m");
+		ft_putstr("\x1b[31mKO! \x1b[0m");
 }
 
 void	run_tests()
 {
-	ft_putstr("ft_bzero\n");
+	ft_putstr("\nft_bzero:\n");
 	confirm(ck_bzero(0x42424242, sizeof(int)));
-	ft_putstr("ft_strcat\n");
+	ft_putstr("\n\nft_strcat:\n");
 	confirm(ck_strcat("abc", "def"));
-	ft_putstr("ft_isalpha\n");
+	ft_putstr("\n\nft_isalpha:\n");
 	confirm(ck_isalpha('Z'));
 	confirm(ck_isalpha(';'));
-	ft_putstr("ft_isdigit\n");
+	ft_putstr("\n\nft_isdigit:\n");
 	confirm(ck_isdigit('1'));
 	confirm(ck_isdigit('0'));
 	confirm(ck_isdigit(')'));
 	confirm(ck_isdigit('T'));
-	ft_putstr("ft_isalnum\n");
+	ft_putstr("\n\nft_isalnum:\n");
 	confirm(ck_isalnum('Z'));
 	confirm(ck_isalnum(';'));
 	confirm(ck_isalnum('0'));
 	confirm(ck_isalnum(')'));
-	ft_putstr("ft_isascii\n");
+	ft_putstr("\n\nft_isascii:\n");
 	confirm(ck_isascii('Z'));
 	confirm(ck_isascii(';'));
-	ft_putstr("ft_toupper\n");
+	ft_putstr("\n\nft_toupper:\n");
 	confirm(ck_toupper('Z'));
 	confirm(ck_toupper(';'));
 	confirm(ck_toupper('a'));
-	ft_putstr("ft_tolower\n");
+	ft_putstr("\n\nft_tolower:\n");
 	confirm(ck_tolower('Z'));
 	confirm(ck_tolower(']'));
 	confirm(ck_tolower('a'));
+	ft_putstr("\n\nft_puts:\n");
+	confirm(ck_puts("yolo"));
+	ft_putstr("\n\nft_strlen:\n");
+	confirm(ck_strlen("yolo"));
+	confirm(ck_strlen("y"));
+	confirm(ck_strlen(""));
+	confirm(ck_strlen("yolo56"));
+	ft_putstr("\n\nft_memset:\n");
+	confirm(ck_memset("yolo", 'a', 3));
+	ft_putstr("\n\nft_memcpy:\n");
+	confirm(ck_memcpy("maxmaxmax", "4242", 4));
+	ft_putstr("\n\nft_strdup:\n");
+	confirm(ck_strdup(""));
+	confirm(ck_strdup("maxmaxmax\0"));
 }
 
 int		main(void)
