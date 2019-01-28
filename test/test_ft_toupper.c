@@ -4,6 +4,8 @@ static void test_once(int c)
 {
 	int r1 = toupper(c);
 	int r2 = ft_toupper(c);
+	if (r1 != r2)
+		printf("fail at \'%c\'. got \'%c\'\n", c, r2);
 	assert(r1 == r2);
 }
 

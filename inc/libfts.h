@@ -1,5 +1,5 @@
-#ifndef LIBFTASM_H
-# define LIBFTASM_H
+#ifndef LIBFTS_H
+# define LIBFTS_H
 # include <strings.h>
 
 void	ft_bzero(void *s, size_t n);

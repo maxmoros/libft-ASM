@@ -1,4 +1,4 @@
-#include "libftasm.h"
+#include "libfts.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
