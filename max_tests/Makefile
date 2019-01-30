@@ -9,7 +9,9 @@ ODIR = .objects
 
 OBJ = $(NAME).o \
 		libft.o \
+		ck_bonus.o \
 		ck_bzero.o \
+		ck_cat.o \
 		ck_isto.o \
 		ck_memcpy.o \
 		ck_memset.o \

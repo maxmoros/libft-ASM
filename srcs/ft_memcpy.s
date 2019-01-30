@@ -2,7 +2,7 @@ global ft_memcpy
 
 	section .text
 ft_memcpy:
-	mov		r8, rdi
+	mov		rax, rdi
 	cmp		rsi, 0
 	je		end
 	cmp		rdx, 0
@@ -12,5 +12,4 @@ ft_memcpy:
 	rep		movsb
 
 end:
-	mov		rax, r8
 	ret

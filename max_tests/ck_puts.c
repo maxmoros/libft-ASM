@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ck_puts.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmoros <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/29 20:39:43 by mmoros            #+#    #+#             */
+/*   Updated: 2019/01/29 20:39:45 by mmoros           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asmtests.h"
 
 static void		test_puts(char *str)
@@ -22,11 +34,7 @@ static void		test_puts(char *str)
 	assert(i == len);
 	read[i] = '\0';
 	if (strcmp(read, str))
-	{
-		ft_putstr("failed to put correct data to stdout. Got \'");
-		ft_putstr(str);
-		ft_putstr("\'\n");
-	}
+		ft_putstr("failed to put correct data to stdout.\n");
 	assert(!strcmp(read, str));
 	free(line);
 	fclose(file);

@@ -1,13 +1,13 @@
-global ft_puts
+	global ft_puts
 
 %define WRITE 0x02000004
 
-section .data
+	section .data
 
 newline:	db 0x0a
 nullstr:	db '(null)'
 
-section .text
+	section .text
 
 ft_puts:
 	mov		rdx, 0
@@ -40,7 +40,7 @@ end_char:
 	jnc		end
 
 fail:
-	mov		rax, -1
+	mov		eax, -1
 
 end:
 	ret 

@@ -8,6 +8,7 @@ SDIR = srcs
 IDIR = inc
 
 SRC =	\
+		ft_abs.s		\
 		ft_bzero.s		\
 		ft_strcat.s		\
 		ft_isalpha.s	\
@@ -15,7 +16,11 @@ SRC =	\
 		ft_isalnum.s	\
 		ft_isalnum.s	\
 		ft_isascii.s	\
+		ft_islower.s	\
 		ft_isprint.s	\
+		ft_isspace.s	\
+		ft_isupper.s	\
+		ft_math_swap.s	\
 		ft_toupper.s	\
 		ft_tolower.s	\
 		ft_puts.s		\
@@ -48,16 +53,17 @@ $(ODIR):
 		mkdir -p $(ODIR)
 
 test:
-		gcc -Wall -Wextra -Werror -o testy test.c $(NAME) -I $(IDIR)
+		cd max_tests && $(MAKE) && cd ..
 
 .phony: clean re fclean
 
 fclean: clean
-		rm -rf $(ODIR)
 		rm -rf $(NAME)
 
 clean:
 		rm -rf $(OBJS) testy
+		rm -rf $(ODIR)
+		cd max_tests && $(MAKE) clean && cd ..
 
 re: fclean all
 

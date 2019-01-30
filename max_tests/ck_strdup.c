@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ck_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmoros <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/29 20:33:54 by mmoros            #+#    #+#             */
+/*   Updated: 2019/01/29 20:33:59 by mmoros           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asmtests.h"
 
 static void		test_strdup(size_t n, char *starmap)
 {
 	char	*test_s;
 	char	*my_s;
-	
+
 	test_s = calloc(n + 1, 1);
 	strncpy(test_s, starmap, n);
 	my_s = ft_strdup(test_s);

@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmoros <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/29 20:41:28 by mmoros            #+#    #+#             */
+/*   Updated: 2019/01/29 20:41:29 by mmoros           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asmtests.h"
 
-void	ft_putchar(int c)
+void			ft_putchar(int c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_putstr(char *str)
+void			ft_putstr(char *str)
 {
 	while (*str)
 		write(1, str++, 1);
 }
 
-static void	ft_putdig(int n)
+static void		ft_putdig(int n)
 {
 	if (!n)
 		return ;
@@ -19,7 +31,7 @@ static void	ft_putdig(int n)
 	ft_putchar('0' + n % 10);
 }
 
-void		ft_putnbr(int n)
+void			ft_putnbr(int n)
 {
 	if (!n)
 		write(1, "0", 1);
